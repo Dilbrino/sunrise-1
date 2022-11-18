@@ -1,0 +1,33 @@
+{% extends 'owners_page/base.html' %}
+{% block content %}
+<div class="w3-bar">
+
+
+  <a class="w3-bar-item w3-right w3-btn w3-teal" href="/">Home</a>
+  <a href="/logged_out">Log out</a>
+</div>
+
+
+  <b> <h2>Registration Form</h2></b>
+
+  {% for message in messages %}
+<h3>{{ message }}</h3>
+{% endfor %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <lable>First Name</lable> <input type="text" name="firstname"><br><br>
+  <lable>Last Name</lable> <input type="text" name="lastname"><br><br>
+  <lable>Username</lable> <input type="text" name="username"><br><br>
+  <lable>Password</lable> <input type="password" name="password"><br><br>
+  <lable>Email</lable> <input type="text" name="email"><br><br>
+  <lable>Tlf</lable> <input type="number" name="mobile"><br><br>
+  <lable>City</lable> <input type="text" name="city"><br><br>
+  <lable>Postcode</lable> <input class="w3-input" type="text" name="postcode"><br><br>
+  <input type="submit"><br><br>
+</form>
+</div>
+</div>
+
+{% endblock %}

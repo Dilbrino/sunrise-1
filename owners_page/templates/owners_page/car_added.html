@@ -1,0 +1,26 @@
+{% block content %}
+
+{% csrf_token %}
+<h1>This is the owner's home page</h1>
+
+<p>Please register your car: {{user.username}}</p>
+
+<!--<div class="w3-bar w3-black w3-large">-->
+<!--  <div class="w3-bar-item w3-left w3-black">Car Dealer Portal: {{user.username}}</div>-->
+<!--  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/logout/">Logout</a>-->
+<!--  <a class="w3-bar-item w3-btn w3-teal w3-right " href="/car_dealer_portal/auth/">Home</a>-->
+<!--  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/order_list/">Orders</a>-->
+<!--  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/manage_vehicles/">Vehicles</a>-->
+<!--  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/history/">Earnings</a>-->
+<!--</div>-->
+
+    <a href="{% url 'owner_home' %}"> Owner Home</a><br>
+ <a href="/login">Customer Login</a><br>
+     <a href="/admin">Admin Login</a>
+<div class="w3-display-container" style="height:300px;">
+  <div class="w3-display-middle">
+    Vehicle Details Added! <br><br>
+    <a href="/owners_page/index/">Back To Home Page</a>
+</div>
+</div>
+{% endblock %}

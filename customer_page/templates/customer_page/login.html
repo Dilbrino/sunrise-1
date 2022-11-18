@@ -1,0 +1,23 @@
+{% extends 'owners_page/base.html' %}
+
+{% block content %}
+<h1>This is the customer login page</h1>
+{% for message in messages %}
+<h3>{{ message }}</h3>
+{% endfor %}
+
+
+      <form action="" method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+        <input type="text" name="username" placeholder="username"><br><br>
+        <input type="password" name="password" placeholder="password"><br><br>
+        <input type="submit" value="Login">
+      </form>
+
+
+        <a href="/register">You don't have an account?
+            Register as a new customer</a>
+          <br> <p> <a href="/">Home</a> </p>
+
+{% endblock %}

@@ -1,18 +1,18 @@
 {% block content %}
 <html>
 <head>
-  <title>Car Rental System</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sunrise Cars</title>
+
 </head>
 <body>
-    <h1>Online Car Rental System</h1>
+    <h1>Sunrise Cars</h1>
 
-<a class="w3-btn w3-teal" href="/">Home</a>
+<a href="/">Home</a>
     <br> <br>
-{% if request.user.is_authenticated %}
-    <a href="{% url 'logout' %}">Log out</a>
+{% if user.is_authenticated %}
+    Hi {{ user.username }}!
     {% else %}
-    <a href="{% url 'users:login' %}">Log in</a>
+    <a href="{% url 'customer_home:login' %}">Log in</a>
     {% endif %}
   {% endblock %}
 

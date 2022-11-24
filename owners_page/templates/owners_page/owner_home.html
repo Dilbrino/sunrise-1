@@ -3,25 +3,19 @@
 
 <titl> Owner Home Page </titl>
 
-<p>Welcome: {{user.username}}</p>
-<h4>Please register your car</h4>
 
-<form action="" method="post">{% csrf_token %}
-  <lable>Car type :</lable> <input type="text" name="car_name"><br><br>
-  <lable>Car model  :</lable> <input type="text" name="color"><br><br>
-  <lable>Price per hour  :</lable> <input type="text" name="color"><br><br>
-  <lable>City :</lable> <input type="text" name="city"><br><br>
-  <lable>Postcode :</lable> <input type="text" name="pincode"><br><br>
-  <lable>Description :</lable> <input type="text" name="description"><br><br>
-  <lable>Capacity (Seats) :</lable> <input type="text" name="capacity"><br><br>
-  <hr>
- <h5>Information about car owner</h5>
-  <lable>Location :</lable> <input type="text" name="location"><br><br>
-  <lable>Phone Number :</lable> <input type="number" name="phone"><br><br>
-  <lable>Wallet:</lable> <input type="number" name="wallet"><br><br>
-  <input type="submit" value="Add Vehicle"><br><br>
-</form>
-</div>
+  <p> Welcome: {{user.username}}</p>
+
+<p>
+  <a href="{% url 'owner_logout' %}">Logout</a>
+  <br>
+  <a href="{% url 'car_added' %}">Add a car</a>
+  <br>
+  <a href="/owners_page/manage">Manage</a>
+</p>
+
+
+<br> <p> <a href="/">Home</a> </p>
 
 
 {% endblock %}

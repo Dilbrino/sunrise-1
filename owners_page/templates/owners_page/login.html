@@ -7,7 +7,7 @@
 {% endfor %}
 
 
-      <form action="" method="POST">
+      <form action="{% url 'owner_login' %}" method="POST">
           {% csrf_token %}
           {{ form.as_p }}
         <input type="text" name="username" placeholder="username"><br><br>
@@ -16,7 +16,7 @@
       </form>
 
 
-        <a href="/register">You don't have an account?
+        <a href="{% url 'owner_register' %}">You don't have an account?
             Register as a car owner</a>
           <br> <p> <a href="/">Home</a> </p>
 

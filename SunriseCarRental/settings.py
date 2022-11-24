@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     #My apps
+    'django_tables2',
     'owners_page',
     'home',
     'customer_page',

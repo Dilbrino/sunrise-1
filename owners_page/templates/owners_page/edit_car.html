@@ -1,12 +1,12 @@
 {% load static %}
 
-<tit> Add A Car </tit>
+<tit> Edit A Car </tit>
 
 {% if  message%}
 <p> {{message}}</p>
 <br> <p> <a href="/">Home</a> </p>
 {% else %}
-<form action="{% url 'car_added' %}" method="POST">
+<form action="{% url 'edit_car' id %}" method="POST">
   {% csrf_token %}
 
   {% for field in form %}

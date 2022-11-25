@@ -3,6 +3,7 @@ from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.db import models
 
 # Create your models here.
+
 from owners_page.models import Car, CarOwner
 
 
@@ -18,4 +19,5 @@ class Orders(models.Model):
     car = models.ForeignKey(Car, on_delete=models.PROTECT)
     days = models.CharField(max_length=3)
     is_complete = models.BooleanField(default=False)
+    
 

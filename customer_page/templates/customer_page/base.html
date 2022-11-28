@@ -1,14 +1,22 @@
-{% block content %}
-<html>
+<!doctype html>
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+shrink-to-fit=no">
   <title>Sunrise Cars</title>
 
 </head>
+{% block content %}
 <body>
     <h1>Sunrise Cars</h1>
 
 <a href="/">Home</a>
     <br> <br>
+
 {% if user.is_authenticated %}
     Hi {{ user.username }}!
     {% else %}

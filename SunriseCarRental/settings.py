@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'owners_page',
     'home',
     'customer_page',
+    #Third party apps
+    'bootstrap5',
     #Django apps
     'django.contrib.admin',
     'django.contrib.auth',

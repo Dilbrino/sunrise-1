@@ -1,35 +1,26 @@
+{% extends 'customer_page/base.html' %}
+{% load bootstrap5 %}
+
+{% block page_header %}
+  <a href="/">Home</a>
+<h2>Registration Form</h2></b>
+{% endblock page_header %}
 
 {% block content %}
-<div class="w3-bar">
-
-  <a href="/">Home</a>
-</div>
-
-  <b> <h2>Registration Form</h2></b>
-
-  {% for message in messages %}
+{% for message in messages %}
 <h3>{{ message }}</h3>
 {% endfor %}
 
-<form action="{% url 'customer_register' %}" method="POST">
+
+<form method="POST" action="{% url 'customer_register' %}" >
   {% csrf_token %}
-
-  {% for field in form %}
-                    <div class="form-row">
-                        {{ field.errors }}
-                        <div class="col">
-                        {{ field.label_tag }}
-                    </div>
-                    <div class="col">
-                     {{ field }}
-                      </div>
-                    </div>
-                      {% endfor %}
-                      <button type="submit" class="btn btn-primary btn-lg">
-                        <i class="far fa-save"></i> save
-                     </button>
+  {% bootstrap_form form %}
+  {% buttons %}
+  <button type="submit" class="btn btn-primary">
+       save
+  </button>
+  {% endbuttons %}
 </form>
-</div>
-</div>
-
 {% endblock %}
+
+

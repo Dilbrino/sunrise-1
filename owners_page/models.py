@@ -29,7 +29,7 @@ class Car(models.Model):
     available_car = models.BooleanField(default=True)
     date_added = models.DateTimeField(auto_now_add=True)
     extra_info = models.CharField(max_length=100)
-    price = models.IntegerField(max_length=500, default=0)
+    price = models.IntegerField(default=0)
 
     def __str__(self):
         return self.car_name + ' ' + self.car_model

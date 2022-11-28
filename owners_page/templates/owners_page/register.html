@@ -1,4 +1,6 @@
 {% extends 'owners_page/base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
 {% block content %}
 <div class="w3-bar">
 
@@ -16,39 +18,13 @@
 
 <form action="{% url 'owner_register' %}" method="POST">
   {% csrf_token %}
-
-  {% for field in form %}
-                    <div class="form-row">
-                        {{ field.errors }}
-                        <div class="col">
-                        {{ field.label_tag }}
-                    </div>
-                    <div class="col">
-                     {{ field }}
-                      </div>
-                    </div>
-                      {% endfor %}
-                      <button type="submit" class="btn btn-primary btn-lg">
-                        <i class="far fa-save"></i> save
-                     </button>
+  {% bootstrap_form form %}
+  {% buttons %}
+  <button type="submit" class="btn btn-primary btn-lg">
+      <i class="far fa-save"></i> save
+  </button>
+  {% endbuttons %}
 </form>
-</div>
-</div>
-
-{% comment %} <form action="" method="POST">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <lable>First Name</lable> <input type="text" name="firstname"><br><br>
-  <lable>Last Name</lable> <input type="text" name="lastname"><br><br>
-  <lable>Username</lable> <input type="text" name="username"><br><br>
-  <lable>Password</lable> <input type="password" name="password"><br><br>
-  <lable>Email</lable> <input type="text" name="email"><br><br>
-  <lable>Tlf</lable> <input type="number" name="mobile"><br><br>
-  <lable>City</lable> <input type="text" name="city"><br><br>
-  <lable>Postcode</lable> <input class="w3-input" type="text" name="postcode"><br><br>
-  <input type="submit"><br><br>
-</form>
-</div>
-</div> {% endcomment %}
-
 {% endblock %}
+
+

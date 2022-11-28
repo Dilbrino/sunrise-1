@@ -3,9 +3,12 @@
 {% block content %}
 <div>
   <p>Welcome: {{user.username}}</p>
+  <p>
   <a href="{% url 'owner_logout' %}">Logout</a>
   <a href="{% url 'car_added' %}">Add a car</a>
   <a href="{% url 'owner_password_change' %}">password change</a>
+   <a href="/">Home</a>
+  <p/>
 </div>
 <h3><b>Your Cars</b></h3>
 <div>

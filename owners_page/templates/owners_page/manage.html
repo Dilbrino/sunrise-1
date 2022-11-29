@@ -1,5 +1,51 @@
-{% extends 'customer_page/base.html' %}
+
+{% extends 'home/index.html' %}
 {% load render_table from django_tables2 %}
+{% load static %}
+{% block title %}<title> owner manage page </title>{% endblock title %}
+
+{% block content %}
+
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+   <h4 class="navbar-brand h1 ">Owner manage Page</h4>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-0 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'car_added' %}">Add a car</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'owner_password_change' %}">password change</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'owner_logout' %}">Logout</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+
+
+
+<h3 class="mx-auto" style="width: 10%;"><b>Your Cars</b></h3>
+<table>
+
+
+
+{% render_table table %}
+</table>
+
+{% endblock %}
+
+
+
+
+{% comment %} {% load render_table from django_tables2 %}
 {% block content %}
 <div>
   <p>Welcome: {{user.username}}</p>
@@ -44,7 +90,7 @@
 
 {% endfor %} {% endcomment %}
 
-{% render_table table %}
+{% comment %} {% render_table table %}
 </table>
 </div>
-{% endblock %}
+{% endblock %} {% endcomment %} 

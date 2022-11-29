@@ -27,21 +27,21 @@ class TestViewIndex(TestCase):
 
     # Write code for TestView check Post Method working Properly
 
-    def test_registration_post(self):
+    def test_registration_user_post(self):
         User.objects.create(
             project=self.user1,
-            username='awii malik'
+            username='ronaldo10'
         )
 
         response = self.client.post(self.registration_url, {
-            'first_name': 'Awaa malik',
-            'last_name': 'Awaa malik',
+            'first_name': 'Umari',
+            'last_name': 'Erik',
         })
 
         self.assertEquals(response.status_code, 302)
-        self.assertEquals(self.user1.first_name.first().last_name, 'Awa malik')
+        self.assertEquals(self.user1.first_name.first().last_name, 'Erik')
 
-    def test_registration_post_np_data(self):
+    def test_registration_user_data(self):
         response = self.client.post(self.registration_url)
 
         self.assertEquals(response.status_code, 302)

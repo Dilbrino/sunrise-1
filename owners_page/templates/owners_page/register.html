@@ -1,4 +1,44 @@
-{% extends 'owners_page/base.html' %}
+
+{% extends 'home/index.html' %}
+
+{% load static %}
+{% block title %}<title> owner registration page </title>{% endblock title %}
+
+{% block content %}
+<div class='position-absolute top-50 start-50 translate-middle'>
+<h2>Registration Form</h2></b>
+
+{% for message in messages %}
+<h3>{{ message }}</h3>
+{% endfor %}
+
+<form method="POST" action="{% url 'owner_register' %}" >
+  {% csrf_token %}
+  {% for field in form %}
+                    <div class="form-row">
+                        {{ field.errors }}
+                        <div class="col">
+                        {{ field.label_tag }}
+                    </div>
+                    <div class="col">
+                     {{ field }}
+                      </div>
+                    </div>
+                      {% endfor %}
+  <button type="submit" class="btn btn-primary">
+       save
+  </button>
+ 
+</form>
+</div>
+{% endblock %}
+
+
+
+{% comment %} 
+
+
+
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% block content %}
@@ -27,4 +67,4 @@
 </form>
 {% endblock %}
 
-
+ {% endcomment %}

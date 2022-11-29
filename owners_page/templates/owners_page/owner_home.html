@@ -1,21 +1,36 @@
-{% extends 'owners_page/base.html' %}
+
+{% extends 'home/index.html' %}
+
+{% load static %}
+{% block title %}<title> owner Page </title>{% endblock title %}
+
 {% block content %}
 
-<titl> Owner Home Page </titl>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+   <h4 class="navbar-brand h1 ">Owner Home Page</h4>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-0 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'car_added' %}">Add a car</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/owners_page/manage">Manage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'owner_logout' %}">Logout</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
 
-  <p> Welcome: {{user.username}}</p>
-
-<p>
-  <a href="{% url 'owner_logout' %}">Logout</a>
-  <br>
-  <a href="{% url 'car_added' %}">Add a car</a>
-  <br>
-  <a href="/owners_page/manage">Manage</a>
-</p>
-
-
-<br> <p> <a href="/">Home</a> </p>
-
+<h3 class='position-absolute top-50 start-50 translate-middle'> Welcome {{user.first_name}} {{user.last_name}} on the owner page</h3>
 
 {% endblock %}
+

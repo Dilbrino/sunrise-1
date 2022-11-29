@@ -1,45 +1,41 @@
-{% extends 'customer_page/base.html' %}
+
+{% extends 'home/index.html' %}
 {% load render_table from django_tables2 %}
+{% load static %}
+{% block title %}<title> customer manage page </title>{% endblock title %}
+
 {% block content %}
-<div>
-  <p>Customer Page: {{user.username}}</p>
-  <a href="{% url 'customer_logout' %}">Logout</a>
-  <a href="{% url 'search_car' %}">Search Cars</a>
-  <a href="{% url 'password_change' %}">password change</a>
-</div>
-<h3><b>Your Orders</b></h3>
-<div>
+
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+   <h4 class="navbar-brand h1 ">customer manage page</h4>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-0 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"href="/customer_page/search_car">Search for Available Cars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'password_change' %}">password change</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/customer_page/logout">Logout</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+
+
+
+
 <table>
 
 
-  {% comment %} <tr>
-    <th>Car</th>
-    <th>Days</th>
-    <th>Rent</th>
-    <th>Capacity</th>
-    <th>Description</th>
-    <th>Postcode</th>
-    <th>Action</th>
-  </tr>
-  {% for order in od %}
-  <tr>
-    <td>{{order.car.car_name}}</td>
-    <td>{{order.days}}</td>
-    <td>${{order.rent}}</td>
-    <td>{{order.car.capacity}} Seats</td>
-    <td>{{order.car.description}}</td>
-    <td>{{order.car.location.postcode}}</td>
-    <td>
-      <form action = "/customer_page/delete/" method="post">
-      {% csrf_token %}
-      <input type="hidden" name="id" value="{{order.id}}">
-      <input type="submit" value="Delete">
-    </form>
-
-  </td>
-  </tr>
-
-{% endfor %} {% endcomment %}
 
 {% render_table table %}
 </table>

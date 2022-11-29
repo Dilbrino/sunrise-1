@@ -5,7 +5,6 @@ import json
 
 
 class TestViewIndex(TestCase):
-    # Write code for TestView check Get Method working Properly
     def setUp(self):
         self.client = Client()
         self.list_url = reverse('customer_home')
@@ -25,23 +24,23 @@ class TestViewIndex(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'customer_page/register.html')
 
-    # Write code for TestView check Post Method working Properly
 
-    def test_registration_post(self):
+
+    def test_registration_user_post(self):
         User.objects.create(
-            project=self.user1,
-            username='awii malik'
+            username='rebeca22',
+            user=self.user1
         )
 
         response = self.client.post(self.registration_url, {
-            'first_name': 'Awaa malik',
-            'last_name': 'Awaa malik',
+            'first_name': 'Rebeca',
+            'last_name': 'Peter',
         })
 
         self.assertEquals(response.status_code, 302)
-        self.assertEquals(self.user1.first_name.first().last_name, 'Awa malik')
+        self.assertEquals(self.user1.first_name.first().last_name, 'Peter')
 
-    def test_registration_post_np_data(self):
+    def test_registration_user_data(self):
         response = self.client.post(self.registration_url)
 
         self.assertEquals(response.status_code, 302)
@@ -49,13 +48,13 @@ class TestViewIndex(TestCase):
 
 
 class add_car(TestCase):
-    # Write code for TestView check Get Method working Properly
+
     def setUp(self):
         self.client = Client()
         self.add_car_url = reverse('car_added')
         self.addcar1 = add_car.objects.create(
-            car_name='Civic',
-            car_model='UY007'
+            car_name='Toya',
+            car_model='1990'
         )
 
     def add_car_GET(self):
@@ -63,26 +62,24 @@ class add_car(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'owners_page/car_added.html')
 
-    def add_car_registration(self):
+    def add_car_info(self):
         response = self.client.get(self.add_car_url)
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'owners_page/car_added.html')
 
-    # Write code for TestView check Post Method working Properly
-
     def add_car_post(self):
         add_car.objects.create(
-            project=self.add_car_url,
-            model='YU766'
+            car_name=self.add_car_url,
+            car_model='1990'
         )
 
         response = self.client.post(self.add_car_url, {
-            'first_name': 'Awaa malik',
-            'last_name': 'Awaa malik',
+            'first_name': 'Rebeca',
+            'last_name': 'Peter',
         })
 
         self.assertEquals(response.status_code, 302)
-        self.assertEquals(self.user1.first_name.first().last_name, 'Awa malik')
+        self.assertEquals(self.user1.first_name.first().last_name, 'rebeca')
 
     def add_car_data(self):
         response = self.client.post(self.add_car_url)

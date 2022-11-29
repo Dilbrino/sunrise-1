@@ -1,10 +1,38 @@
-{% load render_table from django_tables2 %}
 
-<form action="{% url 'search_car' %}" method="POST">
+{% extends 'home/index.html' %}
+
+{% load static %}
+{% load render_table from django_tables2 %}
+{% block content %}
+
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+   <h4 class="navbar-brand h1 ">search cars</h4>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-0 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"href="/">home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/customer_page/manage">Manage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/customer_page/logout">Logout</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+<form action="{% url 'search_car' %}" method="POST" class='row '>
     {% csrf_token %}
 
     {% for field in form %}
-    <div class="col">
+    <div class="col px-0 mt-2">
                           {{ field.errors }}
 
 
@@ -14,7 +42,7 @@
                        {{ field }}
                                            </div>
                         {% endfor %}
-                        <button type="submit" class="btn btn-primary btn-lg">
+                        <button type="submit" class="btn btn-primary btn-lg mt-2">
                           <i class="far fa-save"></i> search
                        </button>
   </form>
@@ -24,9 +52,6 @@
   {% render_table table %}
   </table>
 
-  <a href="{% url 'customer_logout' %}">Logout</a>
-  <br> <br>
-  <a href="/customer_page/manage">Manage</a>
-</p>
 
-<br> <p> <a href="/">Home</a> </p>
+
+{% endblock content %}

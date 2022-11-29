@@ -1,24 +1,37 @@
-{% extends 'owners_page/base.html' %}
+
+{% extends 'home/index.html' %}
+
+{% load static %}
+{% block title %}<title> owner login page </title>{% endblock title %}
 
 {% block content %}
-<h1>This is the owner login page</h1>
+
 {% for message in messages %}
 <h3>{{ message }}</h3>
 {% endfor %}
 
 
-      <form action="{% url 'owner_login' %}" method="POST">
+      <form class='position-absolute top-50 start-50 translate-middle' action="{% url 'owner_login' %}" method="POST">
           {% csrf_token %}
-          {{ form.as_p }}
-        <input type="text" name="username" placeholder="username"><br><br>
-        <input type="password" name="password" placeholder="password"><br><br>
-        <input type="submit" value="Login">
+          <div class="form-row my-2">
+            
+        <input type="text" name="username" placeholder="username">
+          </div>
+        <div class="form-row my-2">
+        <input type="password" name="password" placeholder="password">
+      </div>
+        <div class="form-row my-2">
+        <input class="btn btn-primary" type="submit" value="Login">
+      </div>
+
+      <a href="{% url 'owner_register' %}">You don't have an account?
+        Register as a car owner</a>
       </form>
 
 
-        <a href="{% url 'owner_register' %}">You don't have an account?
-            Register as a car owner</a>
-          <br> <p> <a href="/">Home</a> </p>
+        
+       
 
 {% endblock %}
+
 

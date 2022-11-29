@@ -1,5 +1,63 @@
-{% load static %}
 
+{% extends 'home/index.html' %}
+
+{% load static %}
+{% block title %}<title> Edit A Car </title>{% endblock title %}
+
+{% block content %}
+
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+   <h4 class="navbar-brand h1 ">Edit A Car</h4>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-0 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-current="page" href="{% url 'car_added' %}">Edit a Car</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/owners_page/manage">Manage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'owner_logout' %}">Logout</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+
+<div class='position-absolute top-50 start-50 translate-middle ' style='width: 15%'> 
+  <h2>Edit a Car</h2></b>
+{% if  message%}
+<p> {{message}}</p>
+
+{% else %}
+<form action="{% url 'edit_car' id %}" method="POST">
+  {% csrf_token %}
+
+  {% for field in form %}
+                    <div class="form-row">
+                        {{ field.errors }}
+                        <div class="col">
+                        {{ field.label_tag }}
+                    </div>
+                    <div class="col">
+                     {{ field }}
+                      </div>
+                    </div>
+                      {% endfor %}
+                      <button type="submit" class="btn btn-primary btn-lg mt-2">
+                        <i class="far fa-save"></i> save
+                     </button>
+</form>
+{% endif %}
+</div>
+ {% endblock %}
+{% comment %}
 <tit> Edit A Car </tit>
 
 {% if  message%}
@@ -24,4 +82,4 @@
                         <i class="far fa-save"></i> save
                      </button>
 </form>
-{% endif %}
+{% endif %} {% endcomment %}
